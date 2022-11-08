@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useWallet } from "@manahippo/aptos-wallet-adapter";
 
 export default function Landing() {
-	const { connect, connected, disconnect } = useWallet();
+	const { connect, connected, disconnect, wallets } = useWallet();
+
+	const [walletName, setWalletName] = useState(null);
+
+	useEffect(() => {
+		wallets.map((wallet) => console.log(typeof wallet.adapter.name));
+		wallets.map((wallet) => {
+			if (wallet.adapter["name"] === "Martian") {
+				setWalletName(wallet.adapter.name);
+			}
+		});
+	}, []);
 
 	return (
 		<div className="flex flex-col items-center justify-center">
@@ -15,7 +26,7 @@ export default function Landing() {
 				</p>
 			</div>
 			<button
-				onClick={() => connect("Martian")}
+				onClick={() => connect(walletName)}
 				className="flex py-3 px-6 bg-emerald-700 rounded-full text-emerald-100 font-body font-bold text-md my-8"
 			>
 				Connect Wallet
