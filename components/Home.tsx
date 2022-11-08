@@ -109,7 +109,7 @@ export default function Home() {
 						""
 					),
 					{ gas_unit_price: 100 }
-				).catch((err) => console.log("nft minting failed" + e));
+				).catch((err) => console.log("nft minting failed" + err));
 			})
 			.catch((e) => console.log("collection creation failed" + e));
 	};
