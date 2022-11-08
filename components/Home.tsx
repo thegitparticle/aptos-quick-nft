@@ -80,12 +80,14 @@ export default function Home() {
 					QuickNFT on Aptos
 				</p>
 				<p className="text-md text-emerald-500 font-body font-bold mx-24 my-6">
-					{account.address.slice(0, 5) +
+					{account.address.toString().slice(0, 5) +
 						"..." +
-						account.address.slice(
-							account.address.length - 5,
-							account.address.length
-						)}
+						account.address
+							.toString()
+							.slice(
+								account.address.toString().length - 5,
+								account.address.toString().length
+							)}
 				</p>
 			</div>
 		);
