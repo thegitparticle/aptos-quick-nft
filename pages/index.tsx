@@ -30,7 +30,11 @@ export default function Home() {
 				<Main />
 			</main>
 
-			<footer className={styles.footer}>QuickNFT</footer>
+			<footer className={styles.footer}>
+				<p className="text-sm text-emerald-500 font-body font-bold">
+					QuickNFT
+				</p>
+			</footer>
 		</div>
 	);
 }

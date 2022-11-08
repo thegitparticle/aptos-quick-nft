@@ -18,9 +18,6 @@ export default function Main() {
 	return (
 		<div className="flex items-center justify-center">
 			{connected ? <Home /> : <Landing />}
-			<button onClick={() => connect("Martian")}>
-				{connected ? "Disconnect" : "Connect"}
-			</button>
 		</div>
 	);
 }
