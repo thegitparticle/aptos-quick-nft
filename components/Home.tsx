@@ -8,6 +8,7 @@ import {
 	CoinClient,
 	AptosAccountObject,
 } from "aptos";
+import { Popover } from "@headlessui/react";
 
 export const NODE_URL = "https://fullnode.devnet.aptoslabs.com";
 const MAX_U64_BIG_INT: bigint = BigInt(2 ** 64) - BigInt(1);
@@ -79,16 +80,32 @@ export default function Home() {
 				<p className="text-2xl text-emerald-800 font-body font-bold mx-24 my-6">
 					QuickNFT on Aptos
 				</p>
-				<p className="text-md text-emerald-500 font-body font-bold mx-24 my-6">
-					{account.address.toString().slice(0, 5) +
-						"..." +
-						account.address
-							.toString()
-							.slice(
-								account.address.toString().length - 5,
-								account.address.toString().length
-							)}
-				</p>
+				<Popover>
+					<Popover.Button>
+						<div className="flex py-2 px-4 bg-emerald-800/10 mx-24 my-6 rounded-md">
+							<p className="text-md text-emerald-500 font-body font-bold ">
+								{account.address.toString().slice(0, 5) +
+									"..." +
+									account.address
+										.toString()
+										.slice(
+											account.address.toString().length -
+												5,
+											account.address.toString().length
+										)}
+							</p>
+						</div>
+					</Popover.Button>
+					<Popover.Panel className="absolute z-10">
+						<button onClick={() => disconnect()}>
+							<div className="flex py-2 px-4 bg-emerald-800/10 mx-24 my-6 rounded-md">
+								<p className="text-md text-emerald-500 font-body font-bold text-center">
+									Disconnect
+								</p>
+							</div>
+						</button>
+					</Popover.Panel>
+				</Popover>
 			</div>
 		);
 	}
